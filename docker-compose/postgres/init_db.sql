@@ -1,0 +1,1 @@
+CREATE DATABASE bota_pra_fora;
