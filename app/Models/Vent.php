@@ -18,7 +18,7 @@ class Vent extends Model
     protected $fillable = [
         'user_id',
         'vent_content',
-        'accept_comments'
+        'allow_comments'
     ];
 
     /**
@@ -38,7 +38,7 @@ class Vent extends Model
      * @var array
      */
     protected $casts = [
-        'accept_comments' => 'boolean',
+        'allow_comments' => 'boolean',
     ];
 
     public function user() {

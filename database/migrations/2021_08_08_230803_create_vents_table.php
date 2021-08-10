@@ -17,7 +17,7 @@ class CreateVentsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('vent_content');
-            $table->boolean('accept_comments');
+            $table->boolean('allow_comments');
             $table->timestamps();
             $table->softDeletes();
         });
