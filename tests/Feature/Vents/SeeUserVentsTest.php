@@ -41,6 +41,12 @@ class SeeUserVentsTest extends TestCase
                 ->assertJsonCount($vent_qtt, 'vents');
     }
 
+    /**
+     * Test if a user without vents will have an empty array as
+     * response
+     *
+     * @return void
+     */
     public function test_get_vents_for_a_user_without_vents() {
         $user = User::factory()->create();
 
