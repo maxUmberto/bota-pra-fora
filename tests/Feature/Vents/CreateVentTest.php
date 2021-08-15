@@ -10,7 +10,7 @@ use Tests\TestCase;
 // Models
 use App\Models\User;
 
-class VentTest extends TestCase
+class CreateVentTest extends TestCase
 {
     use DatabaseMigrations, RefreshDatabase;
 

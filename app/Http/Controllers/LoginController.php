@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-// REQUESTS
+// requests
 use App\Http\Requests\Login\UserSignUpRequest;
 use App\Http\Requests\Login\UserLoginRequest;
 
-// MODELS
+// models
 use App\Models\User;
 
 use Illuminate\Http\Request;

@@ -5,20 +5,22 @@ namespace App\Http\Controllers;
 // models
 use App\Models\Vent;
 
+// requests
+use App\Http\Requests\Vents\CreateVentRequest;
+
 use Illuminate\Http\Request;
 
 class VentController extends Controller
 {
-    public function createNewVent(Request $request) {
-        $logged_user = auth()->user();
-
-        $validated = $request->validate([
-            'vent_content'   => 'required|max:500',
-            'allow_comments' => 'required|boolean',
-        ]);
-
+    /**
+     * Create a new vent to the logged user
+     * 
+     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function createNewVent(CreateVentRequest $request) {
         $vent = Vent::create([
-            'user_id'        => $logged_user->id,
+            'user_id'        => auth()->user()->id,
             'vent_content'   => $request->vent_content,
             'allow_comments' => $request->allow_comments
         ]);
