@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\VentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('sign-up', [LoginController::class, 'userSignUp']);
 Route::post('login', [LoginController::class, 'userLogin']);
 Route::post('logout', [LoginController::class, 'userLogout']);
+
+Route::prefix('vent')->group(function() {
+    Route::post('new', [VentController::class, 'createNewVent']);
+});

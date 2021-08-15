@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\User;
+// REQUESTS
 use App\Http\Requests\Login\UserSignUpRequest;
 use App\Http\Requests\Login\UserLoginRequest;
-use JWTAuth;
 
+// MODELS
+use App\Models\User;
+
+use Illuminate\Http\Request;
+use JWTAuth;
 class LoginController extends Controller
 {
     
+    /**
+     * Creates a new user at the database and returns its JWT token
+     * 
+     * @param Illuminate\Foundation\Http\FormRequest $request
+     * @return \Illuminate\Http\Response
+     */
     public function userSignUp(UserSignUpRequest $request) {
 
         $user = User::create([
@@ -34,6 +43,12 @@ class LoginController extends Controller
         ], 200);
     }
 
+    /**
+     * Check if the user credentials is valid and then generates its JWT token, log it in
+     * 
+     * @param Illuminate\Foundation\Http\FormRequest
+     * @return \Illuminate\Http\Response
+     */
     public function userLogin(UserLoginRequest $request) {
         $user = User::whereEmail($request->email)
                     ->firstOrFail();
@@ -59,6 +74,12 @@ class LoginController extends Controller
         ], 200);
     }
 
+    /**
+     * Logout the current user
+     * 
+     * @param Illuminate\Foundation\Http\FormRequest
+     * @return Illuminate\Http\Request
+     */
     public function userLogout(Request $request) {
         $has_token = $request->bearerToken();
 
@@ -73,5 +94,4 @@ class LoginController extends Controller
             'success' => false
         ], 412);
     }
-
 }
