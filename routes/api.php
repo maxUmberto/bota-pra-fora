@@ -24,6 +24,6 @@ Route::post('sign-up', [LoginController::class, 'userSignUp']);
 Route::post('login', [LoginController::class, 'userLogin']);
 Route::post('logout', [LoginController::class, 'userLogout']);
 
-Route::prefix('vent')->group(function() {
+Route::middleware(['jwt.auth'])->prefix('vent')->group(function() {
     Route::post('new', [VentController::class, 'createNewVent']);
 });
