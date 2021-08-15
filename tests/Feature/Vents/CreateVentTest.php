@@ -12,7 +12,7 @@ use App\Models\User;
 
 class CreateVentTest extends TestCase
 {
-    use DatabaseMigrations, RefreshDatabase;
+    use DatabaseMigrations;
 
     /**
      * Test if an unlogged user cant create a vent

@@ -30,4 +30,13 @@ class VentController extends Controller
             'message' => 'Desabafo criado com sucesso'
         ], 200);
     }
+
+    public function loadUserVents(Request $request) {
+        $vents = auth()->user()->vents;
+
+        return response()->json([
+            'success' => true,
+            'vents' => $vents
+        ], 200);
+    }
 }

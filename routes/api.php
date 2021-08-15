@@ -26,4 +26,5 @@ Route::post('logout', [LoginController::class, 'userLogout']);
 
 Route::middleware(['jwt.auth'])->prefix('vent')->group(function() {
     Route::post('new', [VentController::class, 'createNewVent']);
+    Route::get('my-vents', [VentController::class, 'loadUserVents']);
 });

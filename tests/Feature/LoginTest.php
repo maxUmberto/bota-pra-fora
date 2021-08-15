@@ -11,7 +11,7 @@ use App\Models\User;
 class LoginTest extends TestCase
 {
 
-  use DatabaseMigrations, RefreshDatabase;
+  use DatabaseMigrations;
 
   const SIGN_UP_DATA = [
     "first_name" => "Max",
