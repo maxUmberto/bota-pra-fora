@@ -19,6 +19,7 @@ services:
     depends_on: 
       - db
       - redis
+      - nginx
 
   db:
     image: postgres:13

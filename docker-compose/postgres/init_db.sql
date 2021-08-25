@@ -1,1 +1,1 @@
-CREATE DATABASE bota_pra_fora;
+CREATE DATABASE IF NOT EXISTS bota_pra_fora;
