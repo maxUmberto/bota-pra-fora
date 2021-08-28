@@ -22,7 +22,7 @@ class SeeVentInfoTest extends TestCase
      *
      * @return void
      */
-    public function test_see_vent_info()
+    public function testSeeVentInfo()
     {
         $vent_info = $this->createVentWithInfos();
         $vent = $vent_info['vent'];
@@ -68,7 +68,7 @@ class SeeVentInfoTest extends TestCase
      *
      * @return void
      */
-    public function test_unable_to_see_vent_info_of_another_user() {
+    public function testUnableToSeeVentInfoOfAnotherUser() {
         $user = User::factory()->create();
 
         $vent_info = $this->createVentWithInfos();

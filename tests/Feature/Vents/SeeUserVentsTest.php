@@ -19,7 +19,7 @@ class SeeUserVentsTest extends TestCase
      *
      * @return void
      */
-    public function test_get_all_user_vents(){
+    public function testGetAllUserVents(){
         $vent_qtt = rand(1,10);
         $user = User::factory()->hasVents($vent_qtt)->create();
 
@@ -47,7 +47,7 @@ class SeeUserVentsTest extends TestCase
      *
      * @return void
      */
-    public function test_get_vents_for_a_user_without_vents() {
+    public function testGetVentsForAUserWithoutVents() {
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)

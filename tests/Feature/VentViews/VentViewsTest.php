@@ -22,7 +22,7 @@ class VentViewsTest extends TestCase {
      * 
      * @return void
      */
-    public function test_see_random_vent() {
+    public function testSeeRandomVent() {
         $vents = Vent::factory(5)->create();
         $user = User::factory()->create();
 
@@ -34,7 +34,7 @@ class VentViewsTest extends TestCase {
      * 
      * @return void
      */
-    public function test_user_cant_see_the_same_vent_twice() {
+    public function testUserCantSeeTheSameVentTwice() {
         $vents = Vent::factory(5)->create();
         $user = User::factory()->create();
 

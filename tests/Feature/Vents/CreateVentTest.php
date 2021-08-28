@@ -19,7 +19,7 @@ class CreateVentTest extends TestCase
      *
      * @return void
      */
-    public function test_create_vent_without_been_logged_in() {
+    public function testCreateVentWithoutBeenLoggedIn() {
         $user = User::factory()->make();
 
         $response = $this->post('/api/vent/new');
@@ -32,7 +32,7 @@ class CreateVentTest extends TestCase
      *
      * @return void
      */
-    public function test_create_vent_without_content() {        
+    public function testCreateVentWithoutContent() {        
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
@@ -55,7 +55,7 @@ class CreateVentTest extends TestCase
      *
      * @return void
      */
-    public function test_create_vent_without_allow_comments() {        
+    public function testCreateVentWithoutAllowComments() {        
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)
@@ -76,7 +76,7 @@ class CreateVentTest extends TestCase
      * Test if an user can create a vent and if the vent created is successfully
      * assigned to the user
      */
-    public function test_create_vent() {
+    public function testCreateVent() {
 
         $vent_content = $this->faker()->paragraph();
         $allow_comments = array_rand([true, false], 1);

@@ -20,7 +20,7 @@ class LoginTest extends TestCase
     "password"   => 123456
   ];
 
-  public function test_create_user_without_first_name(){
+  public function testCreateUserWithoutFirstName(){
     $data = self::SIGN_UP_DATA;
     unset($data['first_name']);
 
@@ -35,7 +35,7 @@ class LoginTest extends TestCase
             ]);
   }
 
-  public function test_create_user_without_last_name() {
+  public function testCreateUserWithoutLastName() {
     $data = self::SIGN_UP_DATA;
     unset($data['last_name']);
 
@@ -50,7 +50,7 @@ class LoginTest extends TestCase
             ]);
   }
   
-  public function test_create_user_without_email() {
+  public function testCreateUserWithoutEmail() {
     $data = self::SIGN_UP_DATA;
     unset($data['email']);
 
@@ -65,7 +65,7 @@ class LoginTest extends TestCase
             ]);
   }
   
-  public function test_create_user_without_password() {
+  public function testCreateUserWithoutPassword() {
     $data = self::SIGN_UP_DATA;
     unset($data['password']);
 
@@ -80,7 +80,7 @@ class LoginTest extends TestCase
             ]);
   }
 
-  public function test_create_user_with_already_registered_mail() {
+  public function testCreateUserWithAlreadyRegisteredMail() {
     User::factory()->create([
       'email' => self::SIGN_UP_DATA['email']
     ]);
@@ -103,7 +103,7 @@ class LoginTest extends TestCase
             ]);
   }
   
-  public function test_create_user() {
+  public function testCreateUser() {
 
     $data = self::SIGN_UP_DATA;
 
@@ -127,7 +127,7 @@ class LoginTest extends TestCase
     ]);
   }
 
-  public function test_login_user_without_sign_up() {
+  public function testLoginUserWithoutSignUp() {
 
     $user = User::factory()->make();
 
@@ -139,7 +139,7 @@ class LoginTest extends TestCase
     $response->assertStatus(404);
   }
 
-  public function test_login_user_with_wrong_password() {
+  public function testLoginUserWithWrongPassword() {
 
     $user = User::factory()->create();
 
@@ -157,7 +157,7 @@ class LoginTest extends TestCase
             ->assertJsonFragment(['success' => false]);
   }
 
-  public function test_logout_user_without_bearer_token() {
+  public function testLogoutUserWithoutBearerToken() {
 
     $user = User::factory()->create();
 
