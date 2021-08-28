@@ -36,6 +36,6 @@ class Reaction extends Model
     }
 
     public function user() {
-        return $this->bleongsToMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 }

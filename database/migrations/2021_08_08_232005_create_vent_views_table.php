@@ -17,8 +17,6 @@ class CreateVentViewsTable extends Migration
             $table->id();
             $table->foreignId('vent_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->decimal('view_location_lat', 10, 2)->nullable();
-            $table->decimal('view_location_lon', 11, 2)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

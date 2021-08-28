@@ -17,6 +17,7 @@ class CreateReactionVentTable extends Migration
             $table->foreignId('reaction_id')->constrained();
             $table->foreignId('vent_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->unique('reaction_id', 'vent_id', 'user_id');
         });
     }
 

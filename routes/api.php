@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\VentCommentController;
 use App\Http\Controllers\VentController;
+use App\Http\Controllers\VentReactionController;
 use App\Http\Controllers\VentViewController;
 
 /*
@@ -32,4 +33,5 @@ Route::middleware(['jwt.auth'])->prefix('vent')->group(function() {
     Route::get('{vent}/info', [VentController::class, 'loadVentInfo']);
     Route::get('view', [VentViewController::class, 'getRandomVent']);
     Route::post('{vent}/comment', [VentCommentController::class, 'createNewComment']);
+    Route::post('{vent}/react/{reaction}', [VentReactionController::class, 'reactToAVent']);
 });

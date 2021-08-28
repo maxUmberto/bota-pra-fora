@@ -93,6 +93,8 @@ class SeeVentInfoTest extends TestCase
         $comments_qtt = rand(0, $views_qtt);
         $reactions_qtt = rand(0, $views_qtt);
 
+        $already_choose_reactions = [];
+
         $vent = Vent::factory()
                     ->hasVentComments($comments_qtt)
                     ->hasVentViews($views_qtt)
@@ -100,8 +102,10 @@ class SeeVentInfoTest extends TestCase
 
         for($i = 0; $i < $reactions_qtt; $i++) {
             $user = User::factory()->create();
-            $reaction = Reaction::inRandomOrder()->pluck('id')->first();
+            $reaction = Reaction::whereNotIn('id', $already_choose_reactions)->inRandomOrder()->pluck('id')->first();
             $vent->reactions()->attach($reaction, ['user_id' => $user->id]);
+
+            array_push($already_choose_reactions, $reaction);
         }
 
         return [

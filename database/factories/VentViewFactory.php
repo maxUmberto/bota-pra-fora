@@ -25,9 +25,7 @@ class VentViewFactory extends Factory
     {
         return [
             'user_id'           => User::factory(),
-            'vent_id'           => Vent::factory(),
-            'view_location_lat' => $this->faker->latitude(-90, 90),
-            'view_location_lon' => $this->faker->longitude(-180, 180)
+            'vent_id'           => Vent::factory()
         ];
     }
 }
