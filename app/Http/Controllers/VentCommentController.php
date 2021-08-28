@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
 
 class VentCommentController extends Controller {
     
+    /**
+     * Save a new comment to the vent
+     * 
+     * @param App\Models\Vent $vent The vent that the user just commented
+     * @param App\Http\Requests\VentComments\CreateVentCommentRequest $request Responsible to validade the user input
+     * 
+     * @return Illuminate\Http\Response
+     */
     public function createNewComment(Vent $vent, CreateVentCommentRequest $request) {
         VentComment::create([
             'comment_content' => $request->comment_content,

@@ -11,6 +11,14 @@ use Illuminate\Database\Eloquent\Builder;
 
 class VentViewController extends Controller {
     
+    /**
+     * Get a random vent that the current logged user havent seen yet,
+     * save it as seen and returns it.
+     * In case the user has seen all the availables vents
+     * null will be returned
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function getRandomVent() {
         $vent = Vent::whereDoesntHave('ventViews', function(Builder $query) {
             $query->where('user_id', auth()->user()->id);
