@@ -29,7 +29,7 @@ class PasswordResetTokenGenerated extends Mailable implements ShouldQueue {
      */
     public function __construct(string $token) {
         $this->token = $token;
-        $this->onQueue('reset_password_queue');
+        $this->onQueue('mail');
     }
 
     /**

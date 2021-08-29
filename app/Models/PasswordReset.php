@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PasswordReset extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+
+    const UPDATED_AT = null;
+    protected $primaryKey = 'email';
+    public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +19,6 @@ class PasswordReset extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
         'email',
         'token'
     ];
@@ -28,8 +30,6 @@ class PasswordReset extends Model
      */
     protected $hidden = [
         'created_at',
-        'updated_at',
-        'deleted_at'
     ];
 
     public function user() {

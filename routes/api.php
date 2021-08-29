@@ -23,7 +23,7 @@ use App\Http\Controllers\VentViewController;
 Route::post('sign-up', [LoginController::class, 'userSignUp']);
 Route::post('login', [LoginController::class, 'userLogin']);
 Route::post('logout', [LoginController::class, 'userLogout']);
-Route::post('forgot-password', [PasswordController::class, 'createResetPasswordLink']);
+Route::post('forgot-password', [PasswordController::class, 'forgotPassoword']);
 Route::post('reset-password', [PasswordController::class, 'resetPassword']);
 
 Route::middleware(['jwt.auth'])->prefix('vent')->group(function() {
