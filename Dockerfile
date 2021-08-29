@@ -22,6 +22,9 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_pgsql pgsql mbstring exif pcntl bcmath gd
 
+# Install extension to php comunnicate with redis
+RUN pecl install redis && docker-php-ext-enable redis
+
 # Run xdebug
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
