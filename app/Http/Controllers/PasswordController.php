@@ -7,7 +7,7 @@ use App\Models\PasswordReset;
 use App\Models\User;
 
 // Mails
-use App\Mail\PasswordResetTokenGenerated;
+use App\Mail\ForgotPasswordMail;
 
 // Requests
 use App\Http\Requests\Password\ForgotPasswordRequest;
@@ -34,7 +34,7 @@ class PasswordController extends Controller {
             'token' => $token
         ]);
 
-        Mail::to($request->email)->queue(new PasswordResetTokenGenerated($token));
+        Mail::to($request->email)->queue(new ForgotPasswordMail($token));
 
         return response()->json([
             'success' => true,

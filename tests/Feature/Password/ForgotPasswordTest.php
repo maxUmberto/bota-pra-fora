@@ -7,7 +7,7 @@ use App\Models\PasswordReset;
 use App\Models\User;
 
 // Mails
-use App\Mail\PasswordResetTokenGenerated;
+use App\Mail\ForgotPasswordMail;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -39,7 +39,9 @@ class ForgotPasswordTest extends TestCase
                     'message'
                 ]);
 
-        Mail::assertQueued(PasswordResetTokenGenerated::class);
+        Mail::assertQueued(ForgotPasswordMail::class, function ($mail) use ($user) {
+            return $mail->hasTo($user->email);
+        });
 
         $this->assertDatabaseCount('password_resets', 1);
 

@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class PasswordResetTokenGenerated extends Mailable implements ShouldQueue {
+class ForgotPasswordMail extends Mailable implements ShouldQueue {
     
     use Queueable, SerializesModels;
 
@@ -39,8 +39,8 @@ class PasswordResetTokenGenerated extends Mailable implements ShouldQueue {
      */
     public function build() {
         $url = env('APP_URL') . "/{$this->token}";
-        return $this->view('mails.passwordResetTokenGeneratedMail')
-                    ->subject('Resetar senha')
+        return $this->view('mails.forgotPasswordMail')
+                    ->subject('Resetar sua senha')
                     ->with(['url' => $url]);
     }
 }
